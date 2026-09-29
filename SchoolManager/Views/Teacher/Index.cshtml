@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SchoolManager.ViewModels.Teacher.TeacherIndexViewModel>
+
+@{
+    ViewData["Title"] = "Учители";
+}
+
+<h1>Учители</h1>
+
+<p>
+    <a asp-action="Create">Създай нов учител</a>| 
+    <a asp-controller="School" asp-action="Index">Виж училища</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SchoolName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => doctor.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => doctor.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => doctor.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => doctor.SchoolName)
+                </td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@doctor.Id">
+                        Редактирай
+                    </a>
+                    |
+                    <a asp-action="Details"
+                       asp-route-id="@doctor.Id">
+                        Детайли
+                    </a>
+                    |
+                    <a asp-action="Delete"
+                       asp-route-id="@doctor.Id">
+                        Изтрий
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

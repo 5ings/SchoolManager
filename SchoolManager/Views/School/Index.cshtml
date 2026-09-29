@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SchoolManager.ViewModels.School.SchoolIndexViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Училища</h1>
+
+<p>
+    <a asp-action="Create">Създай ново училище</a> |
+    <a asp-controller="Teacher"
+       asp-action="Index">
+        Виж учители
+    </a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomsCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomsCount)
+                </td>
+                <td>
+                    <a asp-controller="School" asp-action="Edit" asp-route-id="@item.Id">Редактирай</a> |
+                    <a asp-controller="School" asp-action="Details" asp-route-id="@item.Id">Детайли</a> |
+                    <a asp-controller="School" asp-action="Delete" asp-route-id="@item.Id">Изтрий</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

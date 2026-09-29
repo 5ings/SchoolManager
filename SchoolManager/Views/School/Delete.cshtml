@@ -1,0 +1,30 @@
+﻿@model SchoolManager.ViewModels.School.SchoolDeleteViewModel
+
+<h1>Изтриване на училище</h1>
+
+<h3>Сигурни ли сте, че искате да изтриете това училище?</h3>
+
+<div>
+    <hr />
+
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+
+        <input asp-for="Id" type="hidden" />
+
+        <input type="submit"
+               value="Изтриване"
+               class="btn btn-danger" />
+
+        <a asp-action="Index">Назад към списъка</a>
+
+    </form>
+</div>

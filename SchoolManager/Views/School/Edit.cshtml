@@ -1,0 +1,50 @@
+﻿@model SchoolManager.ViewModels.School.SchoolEditViewModel
+
+<h1>Редактиране на училище</h1>
+
+<form asp-action="Edit" method="post">
+
+    <input asp-for="Id" type="hidden" />
+
+    <label>Име:</label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name"></span>
+
+    <br />
+    <br />
+
+    <label>Адрес:</label>
+    <input asp-for="Address" />
+    <span asp-validation-for="Address"></span>
+
+    <br />
+    <br />
+
+    <label>Email:</label>
+    <input asp-for="Email" />
+    <span asp-validation-for="Email"></span>
+
+    <br />
+    <br />
+
+    <label>Телефон:</label>
+    <input asp-for="PhoneNumber" />
+    <span asp-validation-for="PhoneNumber"></span>
+
+    <br />
+    <br />
+
+    <label>Брой стаи:</label>
+    <input asp-for="RoomsCount" />
+    <span asp-validation-for="RoomsCount"></span>
+
+    <br />
+    <br />
+
+    <button type="submit">Запази промените</button>
+
+</form>
+
+<br />
+
+<a asp-action="Index">Назад към списъка</a>
