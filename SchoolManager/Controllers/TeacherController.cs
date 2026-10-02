@@ -27,6 +27,7 @@ namespace SchoolManager.Controllers
                     Id = t.Id,
                     FirstName = t.FirstName,
                     LastName = t.LastName,
+                    Subject = t.Subject,
                     Email = t.Email,
                     PhoneNumber = t.PhoneNumber,
                     SchoolName = t.School.Name
