@@ -1,0 +1,16 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SchoolManager.ViewModels.Teacher
+{
+    public class TeacherDetailsViewModel
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Subject { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string SchoolName { get; set; }
+        public List<string> Students { get; set; } = new List<string>();
+    }
+}

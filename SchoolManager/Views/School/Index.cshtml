@@ -1,0 +1,116 @@
+﻿@model IEnumerable<SchoolManager.ViewModels.School.SchoolIndexViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Училища</h1>
+
+<p>
+    <a asp-action="Create">Създай ново училище</a> |
+    <a asp-controller="Teacher"
+       asp-action="Index">
+        Виж учители
+    </a>
+</p>
+
+<form asp-controller="School" asp-action="Index" method="get">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Име на училище</label>
+
+            <input type="text"
+                   name="search"
+                   value="@ViewBag.Search"
+                   class="form-control"
+                   placeholder="Търси по име..." />
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">Минимален брой стаи</label>
+            <input type="number"
+                   name="minRooms"
+                   value="@ViewBag.MinRooms"
+                   min="0"
+                   class="form-control" />
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">Подреди по</label>
+            <select name="sortOrder" class="form-control">
+                <option value="name"
+                        selected="@(ViewBag.SortOrder == "name")">
+                    Име А-Я
+                </option>
+
+                <option value="rooms_asc"
+                        selected="@(ViewBag.SortOrder == "rooms_asc")">
+                    Стаи - възходящо
+                </option>
+
+                <option value="rooms_desc"
+                        selected="@(ViewBag.SortOrder == "rooms_desc")">
+                    Стаи - низходящо
+                </option>
+            </select>
+        </div>
+
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">
+                Търси
+            </button>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomsCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomsCount)
+                </td>
+                <td>
+                    <a asp-controller="School" asp-action="Edit" asp-route-id="@item.Id">Редактирай</a> |
+                    <a asp-controller="School" asp-action="Details" asp-route-id="@item.Id">Детайли</a> |
+                    <a asp-controller="School" asp-action="Delete" asp-route-id="@item.Id">Изтрий</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
